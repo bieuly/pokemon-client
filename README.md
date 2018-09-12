@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -2450,4 +2449,3 @@ If you have ideas for more “How To” recipes that should be on this page, [le
 =======
 # pokemon-client
 A front end web application written with ReactJS and Typescript
->>>>>>> bb49946021f7964b1a7eaae5b2ce855e95d7be09
