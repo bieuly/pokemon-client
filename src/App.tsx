@@ -34,15 +34,15 @@ class App extends React.Component<any, any> {
   }
 
   public render() {
-    let pokemon = []
-    if(this.state.data) {
-      pokemon = this.state.data.map((p: any) => <div key={p.id}>{ p.id }</div>)
-    }
-
     // let pokemon = []
-    // if(this.state.searchResult) {
-    //   pokemon = this.state.searchResult.map((p: any) => <div key={p.id}>{p.name}</div>)
+    // if(this.state.data) {
+    //   pokemon = this.state.data.map((p: any) => <div key={p.id}>{ p.id }</div>)
     // }
+
+    let pokemon = []
+    if(this.state.searchResult) {
+      pokemon = this.state.searchResult.map((p: any) => <div key={p.id}>{p.name}</div>)
+    }
 
     return (
       <div className="App">

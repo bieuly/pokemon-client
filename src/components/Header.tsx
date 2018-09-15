@@ -10,31 +10,31 @@ interface IHeaderState {
 
 class Header extends React.Component<IHeaderProps, IHeaderState> {
 
-  constructor(props: any) {
+  constructor(props: IHeaderProps) {
     super(props);
     this.state = {
       searchTerm: ""
     }
-    this.updateSearchTerm = this.updateSearchTerm.bind(this);
   }
 
-  public updateSearchTerm(searchTerm: string): void {
+  private handleOnChange = (event: React.FormEvent<HTMLInputElement>) => {
     this.setState({
-      searchTerm
+      searchTerm: event.currentTarget.value
     })
   }
 
-  public log() {
-    console.log("hi")
+  private handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    this.props.search(this.state.searchTerm)
   }
 
   public render() {
       return (
-        <input type="text"
-          onChange={this.log}
-          // onChange={({currentTarget}) => this.updateSearchTerm(currentTarget.value)}
-          // onSubmit={() => this.props.search(this.state.searchTerm)}
-        />
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" id="searchTerm"
+            onChange={this.handleOnChange}
+          />
+        </form>
       );
     }
 }
