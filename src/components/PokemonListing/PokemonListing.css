@@ -1,0 +1,11 @@
+.pokemon_listing {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 20px;
+    padding: 10px;
+}
+
+.pokemon_listing:hover {
+    background-color: lightpink;
+}

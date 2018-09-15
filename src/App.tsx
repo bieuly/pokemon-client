@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import Header from './components/Header';
 import ApiPokemonProvider from './providers/PokemonProvider/ApiPokemonProvider';
+import PokemonListing from './components/PokemonListing/PokemonListing';
 
 class App extends React.Component<any, any> {
   
@@ -34,14 +35,10 @@ class App extends React.Component<any, any> {
   }
 
   public render() {
-    // let pokemon = []
-    // if(this.state.data) {
-    //   pokemon = this.state.data.map((p: any) => <div key={p.id}>{ p.id }</div>)
-    // }
 
     let pokemon = []
     if(this.state.searchResult) {
-      pokemon = this.state.searchResult.map((p: any) => <div key={p.id}>{p.name}</div>)
+      pokemon = this.state.searchResult.map((p: any) => <PokemonListing id={p.id} dex={p.dex} name={p.name} types={p.types}/>)
     }
 
     return (

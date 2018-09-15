@@ -31,7 +31,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
   public render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <input type="text" id="searchTerm"
+          <input type="text" id="searchTerm" autoComplete="off"
             onChange={this.handleOnChange}
           />
         </form>
