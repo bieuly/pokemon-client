@@ -26,6 +26,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
   private handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     this.props.search(this.state.searchTerm)
+
   }
 
   public render() {

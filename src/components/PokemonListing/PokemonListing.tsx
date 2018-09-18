@@ -1,5 +1,6 @@
-import * as React from 'react'
-import './PokemonListing.css'
+import * as React from 'react';
+import './PokemonListing.css';
+import { Link } from 'react-router-dom';
 
 interface IPokemonListingProps {
     id: string,
@@ -20,11 +21,13 @@ class PokemonListing extends React.Component<IPokemonListingProps> {
 
     public render() {
         return (
-            <div className="pokemon_listing" id={this.props.id}>
-                <div><span>{this.props.dex}</span></div>
-                <div><span>{this.props.name}</span></div>
-                {this.renderTypes(this.props.types)}
-            </div>
+            <Link to={`/details/${this.props.id}`} style={{textDecoration: 'none'}}>
+                <div className="pokemon_listing" id={this.props.id}>
+                    <div><span>{this.props.dex}</span></div>
+                    <div><span>{this.props.name}</span></div>
+                    {this.renderTypes(this.props.types)}
+                </div>
+            </Link>
         );
         
     }

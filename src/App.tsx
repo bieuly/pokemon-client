@@ -2,7 +2,10 @@ import * as React from 'react';
 import './App.css';
 import Header from './components/Header';
 import ApiPokemonProvider from './providers/PokemonProvider/ApiPokemonProvider';
-import PokemonListing from './components/PokemonListing/PokemonListing';
+import { Route, Switch, withRouter } from "react-router-dom";
+import HomePage from './pages/HomePage';
+import PokemonListingPage from './pages/PokemonListingPage';
+import PokemonDetailsPage from './pages/PokemonDetailsPage';
 
 class App extends React.Component<any, any> {
   
@@ -27,27 +30,26 @@ class App extends React.Component<any, any> {
     });     
   }
 
-  public async search(searchTerm: string): Promise<void> {
+  public async search(searchTerm: string): Promise<any> {
      const searchResult = await this.apiPokemonProvider.search(searchTerm);
      this.setState({
        searchResult
      })
+     this.props.history.push("/search")
   }
 
   public render() {
-
-    let pokemon = []
-    if(this.state.searchResult) {
-      pokemon = this.state.searchResult.map((p: any) => <PokemonListing id={p.id} dex={p.dex} name={p.name} types={p.types}/>)
-    }
-
     return (
       <div className="App">
-        <Header search={this.search}/>
-        { pokemon }
+      <Header search={this.search}/>
+          <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/search" render={(props: any)=><PokemonListingPage {...props} pokemons={this.state.searchResult}/>} />
+            <Route path="/details/:id" render={(props: any)=><PokemonDetailsPage {...props} details={this.state.searchResult.find((p:any)=>p.id==props.match.params.id)} />}/>
+          </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
