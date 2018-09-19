@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import ApiPokemonProvider from './providers/PokemonProvider/ApiPokemonProvider';
 import { Route, Switch, withRouter } from "react-router-dom";
 import HomePage from './pages/HomePage';

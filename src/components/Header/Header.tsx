@@ -1,4 +1,6 @@
-import * as React from 'react'
+import * as React from 'react';
+import HomeLink from '../HomeLink/HomeLink';
+import "./Header.css"
 
 interface IHeaderProps {
   search(searchTerm: string): Promise<void>
@@ -26,16 +28,18 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
   private handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     this.props.search(this.state.searchTerm)
-
   }
 
   public render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" id="searchTerm" autoComplete="off"
-            onChange={this.handleOnChange}
-          />
-        </form>
+        <div className="header">
+          <HomeLink/>
+          <form onSubmit={this.handleSubmit}>
+            <input className="search-bar" type="text" id="searchTerm" autoComplete="off"
+              onChange={this.handleOnChange}
+            />
+          </form>
+        </div>
       );
     }
 }
