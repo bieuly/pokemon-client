@@ -1,5 +1,6 @@
 import * as React from "react";
 import PokemonListing from "../components/PokemonListing/PokemonListing";
+import Typography from '@material-ui/core/Typography';
 
 const PokemonListingPage = (data: any) => {
     let results = [];
@@ -7,8 +8,8 @@ const PokemonListingPage = (data: any) => {
         results = data.pokemons.map((p: any) => <PokemonListing id={p.id} dex={p.dex} name={p.name} types={p.types}/>)
       }
     return (
-        <div id="search-results">
-            <h1>Search Results</h1>
+        <div>
+            <Typography variant="headline" component="h2">Search Results</Typography>
             { results }
         </div>
     )

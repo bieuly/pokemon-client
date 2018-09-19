@@ -1,13 +1,27 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom'
-import './HomeLinkStyles.css'
+import { Link } from 'react-router-dom';
+import './HomeLinkStyles.css';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-const HomeLink = () => (
-    <div>
-        <Link to="/">
-            <button className="home-link">Home</button>
-        </Link>
-    </div>
-)
+const styles = (theme: any) => ({
+    button: {
+        margin: theme.spacing.unit
+    },
+    input: {
+        display: 'none'
+    }
+})
 
-export default HomeLink;
+const HomeLink = (props: any) => {
+    const { classes } = props;
+    return (
+        <div>
+            <Link to="/">
+                <Button variant="contained" color="primary" className={classes.button}>Home</Button>
+            </Link>
+        </div>
+    );
+}
+
+export default withStyles(styles)(HomeLink);

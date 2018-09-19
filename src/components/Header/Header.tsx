@@ -1,6 +1,7 @@
 import * as React from 'react';
 import HomeLink from '../HomeLink/HomeLink';
-import "./Header.css"
+import "./Header.css";
+import Input from '@material-ui/core/Input';
 
 interface IHeaderProps {
   search(searchTerm: string): Promise<void>
@@ -19,9 +20,9 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
   }
 
-  private handleOnChange = (event: React.FormEvent<HTMLInputElement>) => {
+  private handleOnChange = (event: any) => {
     this.setState({
-      searchTerm: event.currentTarget.value
+      searchTerm: event.target.value
     })
   }
 
@@ -35,7 +36,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
         <div className="header">
           <HomeLink/>
           <form onSubmit={this.handleSubmit}>
-            <input className="search-bar" type="text" id="searchTerm" autoComplete="off"
+            <Input placeholder="Search..." type="text" id="searchTerm" autoComplete="off"
               onChange={this.handleOnChange}
             />
           </form>
@@ -44,4 +45,4 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
 }
 
-export default Header
+export default Header;
